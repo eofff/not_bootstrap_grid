@@ -1,0 +1,101 @@
+@mixin block($margin_right) {
+    display: inline-block;
+    margin: 0 ($margin_right / 2);
+}
+
+@mixin col($size, $block_size, $margin_right) {
+    @include block($margin_right);
+    width: $size * ($block_size + $margin_right) - $margin_right;
+}
+
+@mixin grid($width, $block_size, $margin_right, $is_visible-sm, $is_visible-md, $is_visible-lg, $is_visible-xl) {
+    .row {
+        margin: auto;
+        width: $width;
+        font-size: 0;
+    }
+
+    .row * {
+        font-size: initial;
+    }
+
+    @if not $is_visible-sm {
+        @for $i from 1 through 12 {
+            .col-sm-#{$i} {
+                display: none;
+            }
+        }
+    }
+
+    @if not $is_visible-md {
+        @for $i from 1 through 12 {
+            .col-md-#{$i} {
+                display: none;
+            }
+        }
+    }
+
+    @if not $is_visible-lg {
+        @for $i from 1 through 12 {
+            .col-lg-#{$i} {
+                display: none;
+            }
+        }
+    }
+
+    @if not $is_visible-xl {
+        @for $i from 1 through 12 {
+            .col-xl-#{$i} {
+                display: none;
+            }
+        }
+    }
+
+    @for $i from 1 through 12 {
+        .col-#{$i} { @include col($i, $block_size, $margin_right); }
+    }
+
+    @if $is_visible-sm {
+        @for $i from 1 through 12 {
+            .col-sm-#{$i} { @include col($i, $block_size, $margin_right); }
+        }
+    }
+
+    @if $is_visible-md {
+        @for $i from 1 through 12 {
+            .col-md-#{$i} { @include col($i, $block_size, $margin_right); }
+        }
+    }
+
+    @if $is_visible-lg {
+        @for $i from 1 through 12 {
+            .col-lg-#{$i} { @include col($i, $block_size, $margin_right); }
+        }
+    }
+
+    @if $is_visible-xl {
+        @for $i from 1 through 12 {
+            .col-xl-#{$i} { @include col($i, $block_size, $margin_right); }
+        }
+    }
+}
+
+@media (max-width: 575px) {
+    @include grid(auto, 6.3%, 2%, false, false, false, false);
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+    @include grid(560px, 30px, 15px, true, false, false, false);
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    @include grid(764px, 42px, 20px, true, true, false, false);
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    @include grid(960px, 60px, 20px, true, true, true, false);
+}
+
+@media (min-width: 1200px) {
+    @include grid(1176px, 68px, 30px, true, true, true, true);
+}
