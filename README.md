@@ -8,9 +8,11 @@ col-xl-<number> for extra large screens
 where <number> is number of used collumns
 
 for example:
+```html
 <div class="row">
   <div class="col-12 col-md-6">elem</div>
 </div>
+```
 
 inner element will occupy the entire width of the screen on extra small screens
 and half the screen on medium and wider screens
