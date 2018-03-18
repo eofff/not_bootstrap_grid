@@ -76,7 +76,7 @@
 }
 
 @media (max-width: 575px) {
-    @include grid(auto, 8.3, false, false, false, false);
+    @include grid(auto, 8.3%, false, false, false, false);
 }
 
 @media (min-width: 576px) and (max-width: 767px) {
