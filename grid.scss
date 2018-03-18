@@ -1,5 +1,5 @@
 @mixin col($size, $block_size) {
-    display: inline-block;
+    display: inline-flex;
     width: $size * $block_size;
 }
 
